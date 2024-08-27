@@ -6,3 +6,5 @@ filter_img = img.filter(ImageFilter.BLUR)
 filter_img.save('blur.png', 'png')
 
 filter_img.show()
+
+# Test
