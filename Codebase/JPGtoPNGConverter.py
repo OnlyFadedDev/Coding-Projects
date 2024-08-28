@@ -1,3 +1,7 @@
+# Run file through terminal and give it arguments for path and dir name
+# Will make a new dir if dir does not exist currently
+# Then will iterate through the dir and convert images from JPG to PNG
+
 import sys
 import os
 from PIL import Image
