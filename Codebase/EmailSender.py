@@ -2,12 +2,21 @@
 
 import smtplib
 from email.message import EmailMessage
+from string import Template
+from pathlib import Path 
 
+html = Template(Path('index.html').read_text())
+email = EmailMessage()
+email['from'] = 'Andrei Neagoie'
+email['to'] = 'testingemail@'
+email['subject'] = 'You won 1,000,000 dollars!'
 
-with smtplib.SMTP_SSL('smtp.gmail.com', 465) as connection:  
-    email_address = 'testingemail4412@gmail.com'
-    email_password = 'rioe ebcd nind ewok' # Need 2fa + app password for this script to work
-    connection.login(email_address, email_password )
-    connection.sendmail(from_addr=email_address, to_addrs='andrei@zerotomastery.io', 
-    msg="subject:hi \n\n this is my message")
-    connection.close()
+email.set_content(html.substitute({'name': 'TinTin'}), 'html')
+
+with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
+  smtp.ehlo()
+  smtp.starttls()
+  smtp.login('<your email address>', '<your password>')
+  smtp.send_message(email)
+  print('all good boss!')
+
