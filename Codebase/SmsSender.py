@@ -14,7 +14,7 @@ print(message.sid)
 
 
 
-# Will try to make a new project with https://ntfy.sh instead because of simplicity.
+# Will try to make a new project with ntfy.sh instead because of simplicity.
 # Does not use API keys or auth setup.
 
 
